@@ -3,26 +3,29 @@
  * public class ListNode {
  *     int val;
  *     ListNode next;
- *     ListNode() {}
+ *     L+istNode() {}
  *     ListNode(int val) { this.val = val; }
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode prev = dummy;
-        for(int i = 1 ;i< left ;i++){
-            prev = prev.next; 
-        }
-        ListNode curr = prev.next;
-        for( int i = 0 ;i< right - left ; i++){
-            ListNode next = curr.next ;
-            curr.next = next.next ;
-            next.next = prev.next ;
-            prev.next = next;
-        }
-        return dummy.next;
+    if(left == 1){
+        return reversal(head , right);
     }
+    head.next = reverseBetween(head.next, left -1, right-1);
+        return head ;
+    }
+    ListNode last = null ;
+    public ListNode reversal(ListNode head , int n ){
+        if(n ==1){
+            last = head.next;
+            return head;
+        }
+        ListNode newNode = reversal(head.next,n-1);
+        head.next.next = head;
+        head.next= last;
+        return newNode;
+    }
+
 }
