@@ -8,7 +8,6 @@ class Solution {
         }
         int a = fib(n - 1);
         int b = fib(n - 2);
-        int c = a + b ;
-        return c;
+        return a + b;
     }
 }
