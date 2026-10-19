@@ -6,8 +6,6 @@ class Solution {
         if(n == 0){
             return 0;
         }
-        int a = fib(n - 1);
-        int b = fib(n - 2);
-        return a + b;
+        return fib(n - 1) + fib(n - 2);
     }
 }
