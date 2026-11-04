@@ -9,30 +9,27 @@
  * }
  */
 class Solution {
-
-    private ListNode head;
-    private Random rand;
+    private Random rand ;
+    private  ListNode head;
     public Solution(ListNode head) {
-        this.head = head;
-        this.rand = new Random ();
-    }
-    
+       this.head = head;
+       this.rand = new Random ();   
+       } 
     public int getRandom() {
-        ListNode pointer = this.head;
-        int result = pointer.val;
-        int count =0;
-        while(pointer != null)
+      ListNode curr = this.head;
+      int count = 0;
+      int result = curr.val;
+      while(curr !=null){
+        count++;
+        if(rand.nextInt(count) == 0)
         {
-            count++;
-            if(rand.nextInt(count) == 0)
-            {
-                result = pointer.val;
-
-            }
-            pointer = pointer.next;
+            result = curr.val;
 
         }
-        return result;
+        curr = curr.next ;
+
+      }
+      return result ;
     }
 }
 
